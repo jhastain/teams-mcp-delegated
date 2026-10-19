@@ -1,0 +1,42 @@
+version = 1
+SPDX-PackageName = "teams-mcp-delegated"
+SPDX-PackageSupplier = "2026 Jason Hastain"
+SPDX-PackageDownloadLocation = "https://github.com/jhastain/teams-mcp-delegated"
+SPDX-PackageComment = "Fork of mcp-teams-server, 2025 INDUSTRIA DE DISEÑO TEXTIL S.A. (INDITEX S.A.)"
+
+# Inherited unchanged from upstream.
+[[annotations]]
+path = [
+    ".gitignore",
+    ".dockerignore",
+    ".github/**",
+    ".python-version",
+    "repolinter.json",
+    "REUSE.toml",
+    "NOTICE",
+    "Dockerfile",
+    "doc/images/**",
+    "doc/MS-Teams-setup.md",
+    "app/*",
+    "uv.lock",
+    "CODE_OF_CONDUCT.md",
+]
+SPDX-FileCopyrightText = "2025 INDUSTRIA DE DISEÑO TEXTIL S.A. (INDITEX S.A.)"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Written for this fork.
+[[annotations]]
+path = [
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "pyproject.toml",
+    "sample.env",
+    "install-teams-mcp.ps1",
+    "bin/**",
+    "doc/delegated-auth.md",
+    "doc/teams-mcp-delegated.drawio",
+]
+SPDX-FileCopyrightText = "2026 Jason Hastain"
+SPDX-License-Identifier = "Apache-2.0"

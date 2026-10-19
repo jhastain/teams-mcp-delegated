@@ -1,0 +1,83 @@
+[project]
+name = "teams-mcp-delegated"
+version = "1.1.0"
+description = "MCP server for Microsoft Teams: delegated per-user auth, calendar, chats and meeting transcripts. Fork of InditexTech/mcp-teams-server."
+readme = "README.md"
+keywords = ["mcp", "llm", "automation", "Microsoft Teams"]
+authors = [{ name = "Industria de Diseño Textil S.A." }]
+maintainers = [{ name = "Jason Hastain" }]
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "aiohttp==3.10.11",
+    "asyncio>=3.4.3",
+    "azure-identity>=1.21.0",
+    "botbuilder-core>=4.17.0",
+    "botbuilder-integration-aiohttp>=4.17.0",
+    "dotenv>=0.9.9",
+    "mcp[cli]>=1.12.0,<2.0.0",
+    "msgraph-sdk>=1.37.0",
+    "multidict>=6.6.3",
+]
+
+[project.urls]
+Repository = "https://github.com/jhastain/teams-mcp-delegated"
+Issues = "https://github.com/jhastain/teams-mcp-delegated/issues"
+Upstream = "https://github.com/InditexTech/mcp-teams-server"
+
+[project.scripts]
+mcp-teams-server = "mcp_teams_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# The distribution is named teams-mcp-delegated but the import package stays
+# mcp_teams_server, so hatchling has to be told where the code lives.
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_teams_server"]
+
+[dependency-groups]
+dev = [
+    "mock>=5.2.0",
+    "pyproject-parser[cli]>=0.13.0",
+    "pyright>=1.1.398",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.25.3",
+    "pytest-cov>=6.0.0",
+    "reuse>=5.0.2",
+    "ruff>=0.11.2",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+# Tool names, descriptions and docstrings in these modules are the LLM's prompt
+# surface, not prose for humans - wrapping them mid-sentence changes what the
+# model reads. Upstream already exempts teams.py for the same reason.
+"src/mcp_teams_server/teams.py" = ["E501"]
+"src/mcp_teams_server/__init__.py" = ["E501"]
+# Test fixtures are captured payloads; reflowing them makes them harder to diff
+# against the real thing.
+"tests/*" = ["E501"]
+"bin/*" = ["E501"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short --import-mode=importlib --strict-markers -m \"not integration\""
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+markers = [
+    "integration: integration tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]

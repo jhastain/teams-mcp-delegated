@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "version": "1.0.0",
+  "manifestVersion": "1.19",
+  "id": "{{MICROSOFT_APP_ID}}",
+  "name": {
+    "short": "MCP Teams Bot",
+    "full": "Model Context Protocol Teams Bot"
+  },
+  "developer": {
+    "name": "Your Organization",
+    "mpnId": "",
+    "websiteUrl": "https://example.com",
+    "privacyUrl": "https://example.com/privacy",
+    "termsOfUseUrl": "https://example.com/terms"
+  },
+  "description": {
+    "short": "Model Context Protocol Teams Bot",
+    "full": "Model Context Protocol Teams Bot application, necessary to connect MCP host to Teams"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [
+    {
+      "entityId": "conversations",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "entityId": "about",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "{{MICROSOFT_APP_ID}}",
+      "scopes": [
+        "team",
+        "personal",
+        "groupChat"
+      ],
+      "commandLists": [
+        {
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Shows help information"
+            }
+          ],
+          "scopes": [
+            "team"
+          ]
+        }
+      ],
+      "isNotificationOnly": false,
+      "supportsCalling": false,
+      "supportsVideo": false,
+      "supportsFiles": false
+    }
+  ],
+  "validDomains": [
+    "token.botframework.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "TeamMember.Read.Group",
+          "type": "Application"
+        },
+        {
+          "name": "ChannelMessage.Read.Group",
+          "type": "Application"
+        },
+        {
+          "name": "ChannelMessage.Send.Group",
+          "type": "Application"
+        },
+        {
+          "name": "ChannelSettings.Read.Group",
+          "type": "Application"
+        },
+        {
+          "name": "ChannelMember.Read.Group",
+          "type": "Application"
+        },
+        {
+          "name": "Member.Read.Group",
+          "type": "Application"
+        },
+        {
+          "name": "Owner.Read.Group",
+          "type": "Application"
+        }
+      ]
+    }
+  }
+}
