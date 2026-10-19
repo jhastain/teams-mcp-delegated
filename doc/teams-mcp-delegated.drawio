@@ -1,0 +1,107 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Teams MCP (delegated)" id="teams-mcp-delegated">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="b-local" value="Local machine (trust boundary)" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;fillColor=none;strokeColor=#6c8ebf;verticalAlign=top;fontSize=11;fontColor=#3b5a80;" vertex="1" parent="1">
+          <mxGeometry x="30" y="100" width="610" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="b-ms" value="Microsoft cloud (trust boundary)" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;fillColor=none;strokeColor=#b85450;verticalAlign=top;fontSize=11;fontColor=#8a3f3c;" vertex="1" parent="1">
+          <mxGeometry x="690" y="100" width="380" height="620" as="geometry" />
+        </mxCell>
+
+        <mxCell id="llm" value="LLM client (Claude Code, Claude Desktop, …)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="330" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="server" value="mcp_teams_server&#xa;FastMCP over stdio — 23 tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="330" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lifespan" value="app_lifespan — branches ONCE on config.is_delegated" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="225" width="540" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="appmode" value="&lt;b&gt;app mode&lt;/b&gt; (upstream, untouched)&#xa;ClientSecretCredential&#xa;+ CloudAdapter (bot identity)&#xa;&#xa;posts as the bot; cannot read&#xa;your chats, calendar or transcripts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="250" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="delmode" value="&lt;b&gt;delegated mode&lt;/b&gt; (this fork)&#xa;DeviceCodeCredential&#xa;+ TokenCachePersistenceOptions&#xa;&#xa;no bot adapter at all — pure Graph&#xa;with the signed-in user's token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="290" width="250" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="prompt" value="_device_code_prompt&#xa;&lt;i&gt;stdout is the JSON-RPC channel, so the prompt&#xa;goes to stderr — and because the client hides&#xa;stderr, it also opens the browser and raises a&#xa;native dialog with the code&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="425" width="250" height="85" as="geometry" />
+        </mxCell>
+
+        <mxCell id="record" value="AuthenticationRecord&#xa;%LOCALAPPDATA%\.IdentityService\&#xa;mcp-teams-server-auth-record.json&#xa;&lt;i&gt;device-code flow runs once per machine&lt;/i&gt;" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;html=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="355" y="540" width="240" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inbound" value="Inbound: card extraction&#xa;Adaptive Card + O365 Connector Card&#xa;&lt;i&gt;CI and alert bots post no plain-text body,&#xa;so without this the model sees nothing&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="425" width="250" height="85" as="geometry" />
+        </mxCell>
+
+        <mxCell id="outbound" value="Outbound: render + attribute&#xa;markdown table -&gt; real &lt;table&gt; markup&#xa;attribution footer: &quot;Posted via Teams MCP&#xa;on behalf of &amp;lt;user&amp;gt;&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="540" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="graph" value="Microsoft Graph&#xa;/me · teams · channels · chats&#xa;calendar · onlineMeetings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="310" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="entra" value="Entra ID&#xa;app registration (public client)&#xa;device-code grant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="420" width="310" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="transcripts" value="Transcript content (VTT)&#xa;&lt;i&gt;meeting ID rebuilt locally from the join URL,&#xa;so any attendee can fetch it&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="540" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="botfw" value="Bot Framework&#xa;smba.trafficmanager.net&#xa;&lt;i&gt;app mode only; EMEA host hardcoded upstream&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="170" width="310" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="x1" value="stdio JSON-RPC" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;startArrow=block;fontSize=10;" edge="1" parent="1" source="llm" target="server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="server" target="lifespan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="lifespan" target="appmode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="lifespan" target="delmode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x5" value="first run" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1" source="delmode" target="prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6" value="persist / reload" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;startArrow=block;fontSize=10;" edge="1" parent="1" source="prompt" target="record">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x7" value="device code" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1" source="prompt" target="entra">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x8" value="user token" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1" source="delmode" target="graph">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x9" value="client credentials" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1" source="appmode" target="botfw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x10" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="graph" target="transcripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x11" value="messages in" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;dashed=1;" edge="1" parent="1" source="graph" target="inbound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x12" value="messages out" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;dashed=1;" edge="1" parent="1" source="outbound" target="graph">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note" value="Upstream (InditexTech/mcp-teams-server) is the left branch only: a bot posting as itself, 6 tools.&#xa;This fork adds the right branch — delegated per-user auth, 17 further tools (calendar, chats, transcripts, people resolution) — and keeps the left branch byte-identical.&#xa;Every tool has dual internals so both branches work; the only switch is TEAMS_AUTH_MODE." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacingLeft=10;fontSize=10;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="30" y="745" width="1040" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
