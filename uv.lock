@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.10"
 
 [[package]]
@@ -217,7 +217,7 @@ wheels = [
 
 [[package]]
 name = "botbuilder-core"
-version = "4.17.0"
+version = "4.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botbuilder-schema" },
@@ -226,12 +226,12 @@ dependencies = [
     { name = "jsonpickle" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5e/51/0e4d0ba1fc25d57977e17d7bfd55c7bd06a9d8403d5efb23e6fc512356fa/botbuilder_core-4.17.0-py3-none-any.whl", hash = "sha256:56828b11d9af663a200fba0fae4e0b9ad6f815a679c3e90e9b6425b9cbe16d53", size = 116148, upload-time = "2025-05-29T15:10:00.474Z" },
+    { url = "https://files.pythonhosted.org/packages/74/11/cd231b48525e6b34a11cf211db110a95e901204f141c1633bdcbfe1866f1/botbuilder_core-4.17.1-py3-none-any.whl", hash = "sha256:b0a5eea6ce9759dba0847adeed0587fec83ce069f3b4938eb348bb44becde8d7", size = 116145, upload-time = "2026-01-05T19:49:41.946Z" },
 ]
 
 [[package]]
 name = "botbuilder-integration-aiohttp"
-version = "4.17.0"
+version = "4.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -241,24 +241,24 @@ dependencies = [
     { name = "yarl" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/e2/78d9ed5beeeaf9dcdcfd8b7dd0fe4116c8b3ed55b81eb9b01b28037a2b7c/botbuilder_integration_aiohttp-4.17.0-py3-none-any.whl", hash = "sha256:30cd8de3eeec132463bf1834fbd6cfbc6c4a9a361bf478627b6b2f0e7ee211b6", size = 19030, upload-time = "2025-05-29T15:10:02.884Z" },
+    { url = "https://files.pythonhosted.org/packages/c7/0f/19ebe8cfaf7181940e6a31c98a116c9549a8e23b74965be445954ce803db/botbuilder_integration_aiohttp-4.17.1-py3-none-any.whl", hash = "sha256:3b66245e2ba76b2aeeb680ac0a97915f36385bc98361984a7a0d48389d86b524", size = 19030, upload-time = "2026-01-05T19:49:44.017Z" },
 ]
 
 [[package]]
 name = "botbuilder-schema"
-version = "4.17.0"
+version = "4.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "msrest" },
     { name = "urllib3" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/51/10/db5e16bf91fe60b78c88bf42b46e87af7f75097303cece71478a5ae46ccf/botbuilder_schema-4.17.0-py2.py3-none-any.whl", hash = "sha256:97219f8361a91bfa1529ba1231100b527adbe7c4c249d6b23fe1bffaf012b31b", size = 38197, upload-time = "2025-05-29T15:10:05.111Z" },
+    { url = "https://files.pythonhosted.org/packages/94/44/abac81a80ed8aea977afbf8c40c22dec11610bbc1e4bd5bff4a7d7386b94/botbuilder_schema-4.17.1-py2.py3-none-any.whl", hash = "sha256:34da28d721b0635fc41bbe3b368225b9883f527d6f17337f858efe80f74656eb", size = 38196, upload-time = "2026-01-05T19:49:45.501Z" },
 ]
 
 [[package]]
 name = "botframework-connector"
-version = "4.17.0"
+version = "4.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botbuilder-schema" },
@@ -267,19 +267,19 @@ dependencies = [
     { name = "pyjwt" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/df/8daa548a5c73d673e8464cbd156dd8235d6efc35296ad45e89ff9f97c109/botframework_connector-4.17.0-py2.py3-none-any.whl", hash = "sha256:51b8702cc348c63efbdb571f6a4da868d1660efb80ed77d6e04f081720105a87", size = 100886, upload-time = "2025-05-29T15:10:07.271Z" },
+    { url = "https://files.pythonhosted.org/packages/9a/37/6c325f4e6441cba2b3184e6c9a15c3ddc00b5e5aa47966398c3d9836b598/botframework_connector-4.17.1-py2.py3-none-any.whl", hash = "sha256:929d242a242f16c7c637eec7c239a84fd7f5f5bb7f95968407d3a9aa9d7bdf8d", size = 100883, upload-time = "2026-01-05T19:49:48.285Z" },
 ]
 
 [[package]]
 name = "botframework-streaming"
-version = "4.17.0"
+version = "4.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botbuilder-schema" },
     { name = "botframework-connector" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7c/d2/c55470c918c403ebd76b3c1b54e312021bf7edacaf61e4b1c3b132216490/botframework_streaming-4.17.0-py3-none-any.whl", hash = "sha256:ed64fd2a9f56a3d32dd252bf378d0ce145a9bbc9c9a9a0e770889c7d140df435", size = 41953, upload-time = "2025-05-29T15:10:08.499Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/67/16b1a40b9bdc6288d90f17a464fca457e1e50cc36f1c25bc6265bcdffefe/botframework_streaming-4.17.1-py3-none-any.whl", hash = "sha256:66ad1cfe24c8c6b1fde8f95131e39e01197158e7e0bab797dfa709b4f905deb3", size = 41951, upload-time = "2026-01-05T19:49:50.245Z" },
 ]
 
 [[package]]
